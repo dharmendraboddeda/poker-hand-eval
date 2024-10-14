@@ -1,9 +1,14 @@
-import { EvaluatorService } from '../evaluator.service';
-import { PlayingCard, PlayerHand, CommunityCards, Evaluation } from '../evaluator/types';
+import { PokerHandEval } from "../evaluator.service";
+import {
+  PlayingCard,
+  PlayerHand,
+  CommunityCards,
+  Evaluation,
+} from "../evaluator/types";
 
-describe('Check pokerRanking functions', () => {
-  it('should be StraightFlush with straight', () => {
-    const evaluator = new EvaluatorService();
+describe("Check pokerRanking functions", () => {
+  it("should be StraightFlush with straight", () => {
+    const evaluator = new PokerHandEval();
     const PlayerHand = [PlayingCard.S5, PlayingCard.S6] as PlayerHand;
     const communityCards: CommunityCards = [
       PlayingCard.S4,
@@ -12,11 +17,14 @@ describe('Check pokerRanking functions', () => {
       PlayingCard.D3,
       PlayingCard.SA,
     ];
-    const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
-    expect(getResult.result.category).toEqual('StraightFlush');
+    const getResult: Evaluation = evaluator.evaluate(
+      PlayerHand,
+      communityCards
+    );
+    expect(getResult.result.category).toEqual("StraightFlush");
   });
-  it('Should be straightFlush with lowAceStraight ', () => {
-    const evaluator = new EvaluatorService();
+  it("Should be straightFlush with lowAceStraight ", () => {
+    const evaluator = new PokerHandEval();
     const PlayerHand = [PlayingCard.S5, PlayingCard.S7] as PlayerHand;
     const communityCards: CommunityCards = [
       PlayingCard.S4,
@@ -25,11 +33,14 @@ describe('Check pokerRanking functions', () => {
       PlayingCard.D3,
       PlayingCard.SA,
     ];
-    const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
-    expect(getResult.result.category).toEqual('StraightFlush');
+    const getResult: Evaluation = evaluator.evaluate(
+      PlayerHand,
+      communityCards
+    );
+    expect(getResult.result.category).toEqual("StraightFlush");
   });
-  it('chances for Straight and Flush but not straightFlush this should be flush', () => {
-    const evaluator = new EvaluatorService();
+  it("chances for Straight and Flush but not straightFlush this should be flush", () => {
+    const evaluator = new PokerHandEval();
     const PlayerHand = [PlayingCard.S5, PlayingCard.C6] as PlayerHand;
     const communityCards: CommunityCards = [
       PlayingCard.S4,
@@ -38,12 +49,15 @@ describe('Check pokerRanking functions', () => {
       PlayingCard.D3,
       PlayingCard.SA,
     ];
-    const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
-    expect(getResult.result.category).toEqual('Flush');
+    const getResult: Evaluation = evaluator.evaluate(
+      PlayerHand,
+      communityCards
+    );
+    expect(getResult.result.category).toEqual("Flush");
   });
 
-  it('should be StraightFlush with straight', () => {
-    const evaluator = new EvaluatorService();
+  it("should be StraightFlush with straight", () => {
+    const evaluator = new PokerHandEval();
     const PlayerHand = [PlayingCard.SJ, PlayingCard.SK] as PlayerHand;
     const communityCards: CommunityCards = [
       PlayingCard.D7,
@@ -52,12 +66,15 @@ describe('Check pokerRanking functions', () => {
       PlayingCard.DQ,
       PlayingCard.SA,
     ];
-    const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
-    expect(getResult.result.category).toEqual('Straight');
+    const getResult: Evaluation = evaluator.evaluate(
+      PlayerHand,
+      communityCards
+    );
+    expect(getResult.result.category).toEqual("Straight");
   });
 
-  it('should be FullHouse case 1 ', () => {
-    const evaluator = new EvaluatorService();
+  it("should be FullHouse case 1 ", () => {
+    const evaluator = new PokerHandEval();
     const PlayerHand = [PlayingCard.S7, PlayingCard.S7] as PlayerHand;
     const communityCards: CommunityCards = [
       PlayingCard.D7,
@@ -66,12 +83,15 @@ describe('Check pokerRanking functions', () => {
       PlayingCard.DT,
       PlayingCard.SA,
     ];
-    const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
-    expect(getResult.result.category).toEqual('FullHouse');
+    const getResult: Evaluation = evaluator.evaluate(
+      PlayerHand,
+      communityCards
+    );
+    expect(getResult.result.category).toEqual("FullHouse");
   });
 
-  it('check FourOfAKind', () => {
-    const evaluator = new EvaluatorService();
+  it("check FourOfAKind", () => {
+    const evaluator = new PokerHandEval();
     const PlayerHand = [PlayingCard.CA, PlayingCard.DK] as PlayerHand;
 
     const communityCards: CommunityCards = [
@@ -82,14 +102,17 @@ describe('Check pokerRanking functions', () => {
       PlayingCard.SA,
     ];
 
-    const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
+    const getResult: Evaluation = evaluator.evaluate(
+      PlayerHand,
+      communityCards
+    );
 
-    expect(getResult.result.category).toEqual('FourOfAKind');
+    expect(getResult.result.category).toEqual("FourOfAKind");
   });
 });
 
-it('check FourOfAKind', () => {
-  const evaluator = new EvaluatorService();
+it("check FourOfAKind", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.CT, PlayingCard.HT] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -102,11 +125,11 @@ it('check FourOfAKind', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FourOfAKind');
+  expect(getResult.result.category).toEqual("FourOfAKind");
 });
 
-it('check FourOfAKind', () => {
-  const evaluator = new EvaluatorService();
+it("check FourOfAKind", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.H3, PlayingCard.D3] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -119,11 +142,11 @@ it('check FourOfAKind', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FourOfAKind');
+  expect(getResult.result.category).toEqual("FourOfAKind");
 });
 
-it('check FourOfAKind', () => {
-  const evaluator = new EvaluatorService();
+it("check FourOfAKind", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.C2, PlayingCard.S3] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -136,11 +159,11 @@ it('check FourOfAKind', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FourOfAKind');
+  expect(getResult.result.category).toEqual("FourOfAKind");
 });
 
-it('check FourOfAKind', () => {
-  const evaluator = new EvaluatorService();
+it("check FourOfAKind", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.C9, PlayingCard.S9] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -153,11 +176,11 @@ it('check FourOfAKind', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FourOfAKind');
+  expect(getResult.result.category).toEqual("FourOfAKind");
 });
 
-it('check FullHouse', () => {
-  const evaluator = new EvaluatorService();
+it("check FullHouse", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.SA, PlayingCard.DK] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -170,11 +193,11 @@ it('check FullHouse', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FullHouse');
+  expect(getResult.result.category).toEqual("FullHouse");
 });
 
-it('check FullHouse', () => {
-  const evaluator = new EvaluatorService();
+it("check FullHouse", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D8, PlayingCard.S2] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -187,11 +210,11 @@ it('check FullHouse', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FullHouse');
+  expect(getResult.result.category).toEqual("FullHouse");
 });
 
-it('check FullHouse', () => {
-  const evaluator = new EvaluatorService();
+it("check FullHouse", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.CT, PlayingCard.S2] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -204,11 +227,11 @@ it('check FullHouse', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FullHouse');
+  expect(getResult.result.category).toEqual("FullHouse");
 });
 
-it('check FullHouse', () => {
-  const evaluator = new EvaluatorService();
+it("check FullHouse", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.CK, PlayingCard.S2] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -221,11 +244,11 @@ it('check FullHouse', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FullHouse');
+  expect(getResult.result.category).toEqual("FullHouse");
 });
 
-it('check Flush', () => {
-  const evaluator = new EvaluatorService();
+it("check Flush", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.C4, PlayingCard.C8] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -238,11 +261,11 @@ it('check Flush', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Flush');
+  expect(getResult.result.category).toEqual("Flush");
 });
 
-it('check Flush', () => {
-  const evaluator = new EvaluatorService();
+it("check Flush", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D4, PlayingCard.D8] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -255,11 +278,11 @@ it('check Flush', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Flush');
+  expect(getResult.result.category).toEqual("Flush");
 });
 
-it('check Low StraightFlush', () => {
-  const evaluator = new EvaluatorService();
+it("check Low StraightFlush", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.DA, PlayingCard.D2] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -272,11 +295,11 @@ it('check Low StraightFlush', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('StraightFlush');
+  expect(getResult.result.category).toEqual("StraightFlush");
 });
 
-it('check Flush', () => {
-  const evaluator = new EvaluatorService();
+it("check Flush", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.S9, PlayingCard.S9] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -289,11 +312,11 @@ it('check Flush', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Flush');
+  expect(getResult.result.category).toEqual("Flush");
 });
 
-it('check Three of A kind Flush', () => {
-  const evaluator = new EvaluatorService();
+it("check Three of A kind Flush", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.S9, PlayingCard.S9] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -306,11 +329,11 @@ it('check Three of A kind Flush', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Flush');
+  expect(getResult.result.category).toEqual("Flush");
 });
 
-it('check Four of A kind Flush', () => {
-  const evaluator = new EvaluatorService();
+it("check Four of A kind Flush", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.S9, PlayingCard.S9] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -323,11 +346,11 @@ it('check Four of A kind Flush', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FourOfAKind');
+  expect(getResult.result.category).toEqual("FourOfAKind");
 });
 
-it('check FullHouse Flush', () => {
-  const evaluator = new EvaluatorService();
+it("check FullHouse Flush", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.S9, PlayingCard.S8] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -340,11 +363,11 @@ it('check FullHouse Flush', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FullHouse');
+  expect(getResult.result.category).toEqual("FullHouse");
 });
 
-it('check Flush', () => {
-  const evaluator = new EvaluatorService();
+it("check Flush", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.H4, PlayingCard.H6] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -357,11 +380,11 @@ it('check Flush', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Flush');
+  expect(getResult.result.category).toEqual("Flush");
 });
 
-it('check Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D2, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -374,11 +397,11 @@ it('check Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Straight');
+  expect(getResult.result.category).toEqual("Straight");
 });
 
-it('check FullHouse with Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check FullHouse with Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.DA, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -391,11 +414,11 @@ it('check FullHouse with Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('FullHouse');
+  expect(getResult.result.category).toEqual("FullHouse");
 });
 
-it('check  FullHouse with high priority', () => {
-  const evaluator = new EvaluatorService();
+it("check  FullHouse with high priority", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.SA, PlayingCard.DK] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -407,11 +430,11 @@ it('check  FullHouse with high priority', () => {
   ];
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
-  expect(getResult.result.category).toEqual('FullHouse');
+  expect(getResult.result.category).toEqual("FullHouse");
 });
 
-it('check FullHouse with low priority', () => {
-  const evaluator = new EvaluatorService();
+it("check FullHouse with low priority", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.C3, PlayingCard.C2] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -422,11 +445,11 @@ it('check FullHouse with low priority', () => {
     PlayingCard.C9,
   ];
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
-  expect(getResult.result.category).toEqual('FullHouse');
+  expect(getResult.result.category).toEqual("FullHouse");
 });
 
-it('check Low Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check Low Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D2, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -439,11 +462,11 @@ it('check Low Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Straight');
+  expect(getResult.result.category).toEqual("Straight");
 });
 
-it('check high Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check high Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.DK, PlayingCard.CA] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -456,11 +479,11 @@ it('check high Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Straight');
+  expect(getResult.result.category).toEqual("Straight");
 });
 
-it('check Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.ST, PlayingCard.C7] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -473,11 +496,11 @@ it('check Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Straight');
+  expect(getResult.result.category).toEqual("Straight");
 });
 
-it('check Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D2, PlayingCard.D6] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -490,11 +513,11 @@ it('check Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Straight');
+  expect(getResult.result.category).toEqual("Straight");
 });
 
-it('check Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.C5, PlayingCard.D6] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -507,11 +530,11 @@ it('check Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Straight');
+  expect(getResult.result.category).toEqual("Straight");
 });
 
-it('check Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.SA, PlayingCard.D2] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -524,11 +547,11 @@ it('check Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Straight');
+  expect(getResult.result.category).toEqual("Straight");
 });
 
-it('check ThreeOfAKind', () => {
-  const evaluator = new EvaluatorService();
+it("check ThreeOfAKind", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D2, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -541,11 +564,11 @@ it('check ThreeOfAKind', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('ThreeOfAKind');
+  expect(getResult.result.category).toEqual("ThreeOfAKind");
 });
 
 // it('check the RoyalFlush', () => {
-//   const evaluator = new EvaluatorService();
+//   const evaluator = new PokerHandEval();
 //   const PlayerHand = [PlayingCard.SA, PlayingCard.SK] as PlayerHand;
 
 //   const communityCards: CommunityCards = [
@@ -559,8 +582,8 @@ it('check ThreeOfAKind', () => {
 //   expect(getResult.result.category).toEqual('RoyalFlush');
 // });
 
-it('check ThreeOfAKind', () => {
-  const evaluator = new EvaluatorService();
+it("check ThreeOfAKind", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D3, PlayingCard.C8] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -573,11 +596,11 @@ it('check ThreeOfAKind', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('ThreeOfAKind');
+  expect(getResult.result.category).toEqual("ThreeOfAKind");
 });
 
-it('check ThreeOfAKind', () => {
-  const evaluator = new EvaluatorService();
+it("check ThreeOfAKind", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D8, PlayingCard.C8] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -590,11 +613,11 @@ it('check ThreeOfAKind', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('ThreeOfAKind');
+  expect(getResult.result.category).toEqual("ThreeOfAKind");
 });
 
-it('check ThreeOfAKind', () => {
-  const evaluator = new EvaluatorService();
+it("check ThreeOfAKind", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D2, PlayingCard.C8] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -607,11 +630,11 @@ it('check ThreeOfAKind', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('ThreeOfAKind');
+  expect(getResult.result.category).toEqual("ThreeOfAKind");
 });
 
-it('check ThreeOfAKind', () => {
-  const evaluator = new EvaluatorService();
+it("check ThreeOfAKind", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D2, PlayingCard.C8] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -624,11 +647,11 @@ it('check ThreeOfAKind', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('ThreeOfAKind');
+  expect(getResult.result.category).toEqual("ThreeOfAKind");
 });
 
-it('check TwoPair', () => {
-  const evaluator = new EvaluatorService();
+it("check TwoPair", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.S2, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -641,11 +664,11 @@ it('check TwoPair', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('TwoPair');
+  expect(getResult.result.category).toEqual("TwoPair");
 });
 
-it('check TwoPair', () => {
-  const evaluator = new EvaluatorService();
+it("check TwoPair", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.CT, PlayingCard.C5] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -658,11 +681,11 @@ it('check TwoPair', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('TwoPair');
+  expect(getResult.result.category).toEqual("TwoPair");
 });
 
-it('check TwoPair', () => {
-  const evaluator = new EvaluatorService();
+it("check TwoPair", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.DJ, PlayingCard.S9] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -675,11 +698,11 @@ it('check TwoPair', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('TwoPair');
+  expect(getResult.result.category).toEqual("TwoPair");
 });
 
-it('check TwoPair', () => {
-  const evaluator = new EvaluatorService();
+it("check TwoPair", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.ST, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -692,11 +715,11 @@ it('check TwoPair', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('TwoPair');
+  expect(getResult.result.category).toEqual("TwoPair");
 });
 
-it('check TwoPair', () => {
-  const evaluator = new EvaluatorService();
+it("check TwoPair", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.SK, PlayingCard.CT] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -709,11 +732,11 @@ it('check TwoPair', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('TwoPair');
+  expect(getResult.result.category).toEqual("TwoPair");
 });
 
-it('check OnePair', () => {
-  const evaluator = new EvaluatorService();
+it("check OnePair", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.DA, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -726,11 +749,11 @@ it('check OnePair', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('OnePair');
+  expect(getResult.result.category).toEqual("OnePair");
 });
 
-it('check OnePair', () => {
-  const evaluator = new EvaluatorService();
+it("check OnePair", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.SA, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -743,11 +766,11 @@ it('check OnePair', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('OnePair');
+  expect(getResult.result.category).toEqual("OnePair");
 });
 
-it('check OnePair', () => {
-  const evaluator = new EvaluatorService();
+it("check OnePair", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.CT, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -760,11 +783,11 @@ it('check OnePair', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('OnePair');
+  expect(getResult.result.category).toEqual("OnePair");
 });
 
-it('check OnePair', () => {
-  const evaluator = new EvaluatorService();
+it("check OnePair", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.HA, PlayingCard.D4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -777,11 +800,11 @@ it('check OnePair', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('OnePair');
+  expect(getResult.result.category).toEqual("OnePair");
 });
 
-it('check OnePair with low Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check OnePair with low Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.HA, PlayingCard.D4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -794,11 +817,11 @@ it('check OnePair with low Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Straight');
+  expect(getResult.result.category).toEqual("Straight");
 });
 
-it('check OnePair High Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check OnePair High Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.CA, PlayingCard.DK] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -811,11 +834,11 @@ it('check OnePair High Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Straight');
+  expect(getResult.result.category).toEqual("Straight");
 });
 
-it('check OnePair Straight', () => {
-  const evaluator = new EvaluatorService();
+it("check OnePair Straight", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.CT, PlayingCard.D9] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -828,11 +851,11 @@ it('check OnePair Straight', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('Straight');
+  expect(getResult.result.category).toEqual("Straight");
 });
 
-it('check ThreeOfAKind high Priority', () => {
-  const evaluator = new EvaluatorService();
+it("check ThreeOfAKind high Priority", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.CA, PlayingCard.CK] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -844,10 +867,10 @@ it('check ThreeOfAKind high Priority', () => {
   ];
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
-  expect(getResult.result.category).toEqual('ThreeOfAKind');
+  expect(getResult.result.category).toEqual("ThreeOfAKind");
 });
-it('check HighCard', () => {
-  const evaluator = new EvaluatorService();
+it("check HighCard", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.DA, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -860,11 +883,11 @@ it('check HighCard', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('HighCard');
+  expect(getResult.result.category).toEqual("HighCard");
 });
 
-it('check HighCard', () => {
-  const evaluator = new EvaluatorService();
+it("check HighCard", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.HA, PlayingCard.C4] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -877,11 +900,11 @@ it('check HighCard', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('HighCard');
+  expect(getResult.result.category).toEqual("HighCard");
 });
 
-it('check HighCard', () => {
-  const evaluator = new EvaluatorService();
+it("check HighCard", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.D9, PlayingCard.C8] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -894,11 +917,11 @@ it('check HighCard', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('HighCard');
+  expect(getResult.result.category).toEqual("HighCard");
 });
 
-it('check HighCard', () => {
-  const evaluator = new EvaluatorService();
+it("check HighCard", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.ST, PlayingCard.C2] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -911,11 +934,11 @@ it('check HighCard', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('HighCard');
+  expect(getResult.result.category).toEqual("HighCard");
 });
 
-it('check HighCard', () => {
-  const evaluator = new EvaluatorService();
+it("check HighCard", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.SQ, PlayingCard.C9] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -928,11 +951,11 @@ it('check HighCard', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('HighCard');
+  expect(getResult.result.category).toEqual("HighCard");
 });
 
-it('check HighCard', () => {
-  const evaluator = new EvaluatorService();
+it("check HighCard", () => {
+  const evaluator = new PokerHandEval();
   const PlayerHand = [PlayingCard.DJ, PlayingCard.C2] as PlayerHand;
 
   const communityCards: CommunityCards = [
@@ -945,5 +968,5 @@ it('check HighCard', () => {
 
   const getResult: Evaluation = evaluator.evaluate(PlayerHand, communityCards);
 
-  expect(getResult.result.category).toEqual('HighCard');
+  expect(getResult.result.category).toEqual("HighCard");
 });

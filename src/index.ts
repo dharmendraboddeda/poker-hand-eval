@@ -1,3 +1,1 @@
-import { EvaluatorService } from './evaluator.service';
-
-export { EvaluatorService };
+export { PokerHandEval } from "./evaluator.service";
