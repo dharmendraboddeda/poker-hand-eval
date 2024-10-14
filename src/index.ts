@@ -1,5 +1,5 @@
 export { PokerHandEval } from "./evaluator.service";
-export type {
+export {
   CardCategory,
   CommunityCards,
   Evaluation,
