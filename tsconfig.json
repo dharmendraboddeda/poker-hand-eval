@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "outDir": "./build",
-    "module": "CommonJS",
-    "target": "ES6",
-    "strict": true,
+    "module": "ESNext",
+    "target": "ES2017",
+    "moduleResolution": "Node",
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationDir": "./dist",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "declaration": true
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "build", "**/**/*.spec.ts"]
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }
