@@ -1,41 +1,53 @@
-import { PokerHandEval } from "../evaluator.service";
+import { PokerHandEval } from "../evaluator";
 import {
-  PlayingCard,
-  PlayerHand,
-  CommunityCards,
-  Evaluation,
+  PlayingCardType,
+  PlayerHandType,
+  CommunityCardsType,
+  EvaluationType,
 } from "../evaluator/types";
 
 describe("EvaluateHand", () => {
   it("should compare four players with a Full House and a Straight", () => {
     const evaluator = new PokerHandEval();
 
-    const playerOneHand = [PlayingCard.HT, PlayingCard.H9] as PlayerHand;
-    const playerTwoHand = [PlayingCard.D8, PlayingCard.H6] as PlayerHand;
-    const playerThreeHand = [PlayingCard.S9, PlayingCard.C9] as PlayerHand;
-    const playerFourHand = [PlayingCard.DA, PlayingCard.HA] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.HT,
+      PlayingCardType.H9,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.D8,
+      PlayingCardType.H6,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.S9,
+      PlayingCardType.C9,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.DA,
+      PlayingCardType.HA,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.D9,
-      PlayingCard.H9,
-      PlayingCard.CT,
-      PlayingCard.D7,
-      PlayingCard.C6,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.D9,
+      PlayingCardType.H9,
+      PlayingCardType.CT,
+      PlayingCardType.D7,
+      PlayingCardType.C6,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
@@ -50,32 +62,44 @@ describe("EvaluateHand", () => {
 
   it("should compare four players with a Pair, a Straight Flush, and two other hands", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S2, PlayingCard.C2] as PlayerHand;
-    const playerTwoHand = [PlayingCard.S6, PlayingCard.S7] as PlayerHand;
-    const playerThreeHand = [PlayingCard.H3, PlayingCard.S2] as PlayerHand;
-    const playerFourHand = [PlayingCard.H5, PlayingCard.S7] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S2,
+      PlayingCardType.C2,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.S6,
+      PlayingCardType.S7,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.H3,
+      PlayingCardType.S2,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.H5,
+      PlayingCardType.S7,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.S3,
-      PlayingCard.S4,
-      PlayingCard.S5,
-      PlayingCard.DA,
-      PlayingCard.HA,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.S3,
+      PlayingCardType.S4,
+      PlayingCardType.S5,
+      PlayingCardType.DA,
+      PlayingCardType.HA,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
@@ -90,32 +114,44 @@ describe("EvaluateHand", () => {
 
   it("should compare four players with Three of a Kind, a Straight, and two other hands", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.D8, PlayingCard.H8] as PlayerHand;
-    const playerTwoHand = [PlayingCard.C5, PlayingCard.D6] as PlayerHand;
-    const playerThreeHand = [PlayingCard.S3, PlayingCard.H4] as PlayerHand;
-    const playerFourHand = [PlayingCard.D2, PlayingCard.C3] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.D8,
+      PlayingCardType.H8,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.C5,
+      PlayingCardType.D6,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.S3,
+      PlayingCardType.H4,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.D2,
+      PlayingCardType.C3,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.S8,
-      PlayingCard.C7,
-      PlayingCard.C9,
-      PlayingCard.DA,
-      PlayingCard.HA,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.S8,
+      PlayingCardType.C7,
+      PlayingCardType.C9,
+      PlayingCardType.DA,
+      PlayingCardType.HA,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
@@ -128,22 +164,28 @@ describe("EvaluateHand", () => {
 
   it("should compare two players with a Flush and a Straight", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S2, PlayingCard.S3] as PlayerHand;
-    const playerTwoHand = [PlayingCard.S5, PlayingCard.S6] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S2,
+      PlayingCardType.S3,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.S5,
+      PlayingCardType.S6,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.S7,
-      PlayingCard.S8,
-      PlayingCard.S9,
-      PlayingCard.DA,
-      PlayingCard.HA,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.S7,
+      PlayingCardType.S8,
+      PlayingCardType.S9,
+      PlayingCardType.DA,
+      PlayingCardType.HA,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
@@ -155,21 +197,27 @@ describe("EvaluateHand", () => {
 
   it("should compare two players with a Full House and a Full House with different three of a kind", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S2, PlayingCard.S2] as PlayerHand;
-    const playerTwoHand = [PlayingCard.S3, PlayingCard.S3] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S2,
+      PlayingCardType.S2,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.S3,
+      PlayingCardType.S3,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.S4,
-      PlayingCard.S4,
-      PlayingCard.S4,
-      PlayingCard.S5,
-      PlayingCard.S6,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.S4,
+      PlayingCardType.S4,
+      PlayingCardType.S4,
+      PlayingCardType.S5,
+      PlayingCardType.S6,
     ];
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
@@ -181,22 +229,28 @@ describe("EvaluateHand", () => {
 
   it("should compare two players with identical Full Houses", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S7, PlayingCard.S8] as PlayerHand;
-    const playerTwoHand = [PlayingCard.S7, PlayingCard.S8] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S7,
+      PlayingCardType.S8,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.S7,
+      PlayingCardType.S8,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.S9,
-      PlayingCard.S9,
-      PlayingCard.S9,
-      PlayingCard.SJ,
-      PlayingCard.SQ,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.S9,
+      PlayingCardType.S9,
+      PlayingCardType.S9,
+      PlayingCardType.SJ,
+      PlayingCardType.SQ,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
@@ -206,22 +260,28 @@ describe("EvaluateHand", () => {
 
   it("should compare two players with a Full House and a Full House with tie", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S9, PlayingCard.SJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.SJ, PlayingCard.SA] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S9,
+      PlayingCardType.SJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.SJ,
+      PlayingCardType.SA,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.SQ,
-      PlayingCard.SQ,
-      PlayingCard.SQ,
-      PlayingCard.SK,
-      PlayingCard.SJ,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.SQ,
+      PlayingCardType.SQ,
+      PlayingCardType.SQ,
+      PlayingCardType.SK,
+      PlayingCardType.SJ,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
@@ -231,22 +291,28 @@ describe("EvaluateHand", () => {
 
   it("should compare two players with a Royal Flash", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S9, PlayingCard.SJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.DT, PlayingCard.DQ] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S9,
+      PlayingCardType.SJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.DT,
+      PlayingCardType.DQ,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.DA,
-      PlayingCard.DJ,
-      PlayingCard.S9,
-      PlayingCard.DK,
-      PlayingCard.CJ,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.DA,
+      PlayingCardType.DJ,
+      PlayingCardType.S9,
+      PlayingCardType.DK,
+      PlayingCardType.CJ,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
@@ -258,22 +324,28 @@ describe("EvaluateHand", () => {
 
   it("should compare two players with a Straight Flash", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S9, PlayingCard.SJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.S8, PlayingCard.S9] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S9,
+      PlayingCardType.SJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.S8,
+      PlayingCardType.S9,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.SA,
-      PlayingCard.S6,
-      PlayingCard.S2,
-      PlayingCard.S5,
-      PlayingCard.S7,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.SA,
+      PlayingCardType.S6,
+      PlayingCardType.S2,
+      PlayingCardType.S5,
+      PlayingCardType.S7,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
@@ -285,21 +357,27 @@ describe("EvaluateHand", () => {
 
   it("should compare two players with a High Card", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S9, PlayingCard.SJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.SA, PlayingCard.ST] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S9,
+      PlayingCardType.SJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.SA,
+      PlayingCardType.ST,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.S2,
-      PlayingCard.S6,
-      PlayingCard.S3,
-      PlayingCard.S5,
-      PlayingCard.S7,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.S2,
+      PlayingCardType.S6,
+      PlayingCardType.S3,
+      PlayingCardType.S5,
+      PlayingCardType.S7,
     ];
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
@@ -311,37 +389,52 @@ describe("EvaluateHand", () => {
 
   it("should compare five players with a Pair", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S9, PlayingCard.SJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.S2, PlayingCard.ST] as PlayerHand;
-    const playerThreeHand = [PlayingCard.D9, PlayingCard.DJ] as PlayerHand;
-    const playerFourHand = [PlayingCard.C2, PlayingCard.CT] as PlayerHand;
-    const playerFiveHand = [PlayingCard.H9, PlayingCard.HJ] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S9,
+      PlayingCardType.SJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.S2,
+      PlayingCardType.ST,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.D9,
+      PlayingCardType.DJ,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.C2,
+      PlayingCardType.CT,
+    ] as PlayerHandType;
+    const playerFiveHand = [
+      PlayingCardType.H9,
+      PlayingCardType.HJ,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.D2,
-      PlayingCard.C6,
-      PlayingCard.D3,
-      PlayingCard.S5,
-      PlayingCard.S7,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.D2,
+      PlayingCardType.C6,
+      PlayingCardType.D3,
+      PlayingCardType.S5,
+      PlayingCardType.S7,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
-    const playerFiveResult: Evaluation = evaluator.evaluate(
+    const playerFiveResult: EvaluationType = evaluator.evaluate(
       playerFiveHand,
       communityCards
     );
@@ -357,37 +450,52 @@ describe("EvaluateHand", () => {
 
   it("should compare five players with a Flush", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S9, PlayingCard.SJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.D4, PlayingCard.D5] as PlayerHand;
-    const playerThreeHand = [PlayingCard.C9, PlayingCard.CJ] as PlayerHand;
-    const playerFourHand = [PlayingCard.H4, PlayingCard.H5] as PlayerHand;
-    const playerFiveHand = [PlayingCard.S4, PlayingCard.S5] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S9,
+      PlayingCardType.SJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.D4,
+      PlayingCardType.D5,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.C9,
+      PlayingCardType.CJ,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.H4,
+      PlayingCardType.H5,
+    ] as PlayerHandType;
+    const playerFiveHand = [
+      PlayingCardType.S4,
+      PlayingCardType.S5,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.D2,
-      PlayingCard.DA,
-      PlayingCard.D3,
-      PlayingCard.C5,
-      PlayingCard.H7,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.D2,
+      PlayingCardType.DA,
+      PlayingCardType.D3,
+      PlayingCardType.C5,
+      PlayingCardType.H7,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
-    const playerFiveResult: Evaluation = evaluator.evaluate(
+    const playerFiveResult: EvaluationType = evaluator.evaluate(
       playerFiveHand,
       communityCards
     );
@@ -405,37 +513,52 @@ describe("EvaluateHand", () => {
 
   it("should compare five players with a FullHouse", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S9, PlayingCard.SJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.D5, PlayingCard.ST] as PlayerHand;
-    const playerThreeHand = [PlayingCard.H9, PlayingCard.HJ] as PlayerHand;
-    const playerFourHand = [PlayingCard.C5, PlayingCard.CT] as PlayerHand;
-    const playerFiveHand = [PlayingCard.D9, PlayingCard.DJ] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S9,
+      PlayingCardType.SJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.D5,
+      PlayingCardType.ST,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.H9,
+      PlayingCardType.HJ,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.C5,
+      PlayingCardType.CT,
+    ] as PlayerHandType;
+    const playerFiveHand = [
+      PlayingCardType.D9,
+      PlayingCardType.DJ,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.S2,
-      PlayingCard.S2,
-      PlayingCard.S2,
-      PlayingCard.D5,
-      PlayingCard.D7,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.S2,
+      PlayingCardType.S2,
+      PlayingCardType.S2,
+      PlayingCardType.D5,
+      PlayingCardType.D7,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
-    const playerFiveResult: Evaluation = evaluator.evaluate(
+    const playerFiveResult: EvaluationType = evaluator.evaluate(
       playerFiveHand,
       communityCards
     );
@@ -453,37 +576,52 @@ describe("EvaluateHand", () => {
 
   it("should compare five players with a Two Pair", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.C9, PlayingCard.CJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.DA, PlayingCard.HT] as PlayerHand;
-    const playerThreeHand = [PlayingCard.H9, PlayingCard.HJ] as PlayerHand;
-    const playerFourHand = [PlayingCard.CA, PlayingCard.CT] as PlayerHand;
-    const playerFiveHand = [PlayingCard.S9, PlayingCard.SJ] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.C9,
+      PlayingCardType.CJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.DA,
+      PlayingCardType.HT,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.H9,
+      PlayingCardType.HJ,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.CA,
+      PlayingCardType.CT,
+    ] as PlayerHandType;
+    const playerFiveHand = [
+      PlayingCardType.S9,
+      PlayingCardType.SJ,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.C2,
-      PlayingCard.S2,
-      PlayingCard.H2,
-      PlayingCard.DA,
-      PlayingCard.HT,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.C2,
+      PlayingCardType.S2,
+      PlayingCardType.H2,
+      PlayingCardType.DA,
+      PlayingCardType.HT,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
-    const playerFiveResult: Evaluation = evaluator.evaluate(
+    const playerFiveResult: EvaluationType = evaluator.evaluate(
       playerFiveHand,
       communityCards
     );
@@ -499,37 +637,52 @@ describe("EvaluateHand", () => {
 
   it("should compare five players with a Straight", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.C9, PlayingCard.CJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.D3, PlayingCard.H2] as PlayerHand;
-    const playerThreeHand = [PlayingCard.H9, PlayingCard.HJ] as PlayerHand;
-    const playerFourHand = [PlayingCard.C3, PlayingCard.C2] as PlayerHand;
-    const playerFiveHand = [PlayingCard.S9, PlayingCard.SJ] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.C9,
+      PlayingCardType.CJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.D3,
+      PlayingCardType.H2,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.H9,
+      PlayingCardType.HJ,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.C3,
+      PlayingCardType.C2,
+    ] as PlayerHandType;
+    const playerFiveHand = [
+      PlayingCardType.S9,
+      PlayingCardType.SJ,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.C2,
-      PlayingCard.S6,
-      PlayingCard.H5,
-      PlayingCard.DA,
-      PlayingCard.H4,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.C2,
+      PlayingCardType.S6,
+      PlayingCardType.H5,
+      PlayingCardType.DA,
+      PlayingCardType.H4,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
-    const playerFiveResult: Evaluation = evaluator.evaluate(
+    const playerFiveResult: EvaluationType = evaluator.evaluate(
       playerFiveHand,
       communityCards
     );
@@ -545,32 +698,44 @@ describe("EvaluateHand", () => {
 
   it("should compare four players with a Straight Flush with tie ", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.C9, PlayingCard.CJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.C9, PlayingCard.CJ] as PlayerHand;
-    const playerThreeHand = [PlayingCard.H9, PlayingCard.HJ] as PlayerHand;
-    const playerFourHand = [PlayingCard.D9, PlayingCard.DJ] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.C9,
+      PlayingCardType.CJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.C9,
+      PlayingCardType.CJ,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.H9,
+      PlayingCardType.HJ,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.D9,
+      PlayingCardType.DJ,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.CT,
-      PlayingCard.C8,
-      PlayingCard.C7,
-      PlayingCard.D9,
-      PlayingCard.C4,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.CT,
+      PlayingCardType.C8,
+      PlayingCardType.C7,
+      PlayingCardType.D9,
+      PlayingCardType.C4,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
@@ -581,37 +746,52 @@ describe("EvaluateHand", () => {
 
   it("should compare five players with a Straight Flush with low Flush ", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.H9, PlayingCard.DT] as PlayerHand;
-    const playerTwoHand = [PlayingCard.CA, PlayingCard.C4] as PlayerHand;
-    const playerThreeHand = [PlayingCard.S9, PlayingCard.DT] as PlayerHand;
-    const playerFourHand = [PlayingCard.DA, PlayingCard.D4] as PlayerHand;
-    const playerFiveHand = [PlayingCard.SA, PlayingCard.S4] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.H9,
+      PlayingCardType.DT,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.CA,
+      PlayingCardType.C4,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.S9,
+      PlayingCardType.DT,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.DA,
+      PlayingCardType.D4,
+    ] as PlayerHandType;
+    const playerFiveHand = [
+      PlayingCardType.SA,
+      PlayingCardType.S4,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.CT,
-      PlayingCard.C5,
-      PlayingCard.C2,
-      PlayingCard.D9,
-      PlayingCard.C3,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.CT,
+      PlayingCardType.C5,
+      PlayingCardType.C2,
+      PlayingCardType.D9,
+      PlayingCardType.C3,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
-    const playerFiveResult: Evaluation = evaluator.evaluate(
+    const playerFiveResult: EvaluationType = evaluator.evaluate(
       playerFiveHand,
       communityCards
     );
@@ -629,37 +809,52 @@ describe("EvaluateHand", () => {
 
   it("should compare five players with a Straight  Flush ", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.H9, PlayingCard.DT] as PlayerHand;
-    const playerTwoHand = [PlayingCard.CA, PlayingCard.C4] as PlayerHand;
-    const playerThreeHand = [PlayingCard.S9, PlayingCard.DT] as PlayerHand;
-    const playerFourHand = [PlayingCard.DA, PlayingCard.D4] as PlayerHand;
-    const playerFiveHand = [PlayingCard.SA, PlayingCard.S4] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.H9,
+      PlayingCardType.DT,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.CA,
+      PlayingCardType.C4,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.S9,
+      PlayingCardType.DT,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.DA,
+      PlayingCardType.D4,
+    ] as PlayerHandType;
+    const playerFiveHand = [
+      PlayingCardType.SA,
+      PlayingCardType.S4,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.CT,
-      PlayingCard.C5,
-      PlayingCard.C2,
-      PlayingCard.D9,
-      PlayingCard.C3,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.CT,
+      PlayingCardType.C5,
+      PlayingCardType.C2,
+      PlayingCardType.D9,
+      PlayingCardType.C3,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
-    const playerFiveResult: Evaluation = evaluator.evaluate(
+    const playerFiveResult: EvaluationType = evaluator.evaluate(
       playerFiveHand,
       communityCards
     ); // Added evaluation for fifth player
@@ -676,32 +871,44 @@ describe("EvaluateHand", () => {
   });
   it("should compare four players with a Royal Flush with tie ", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.HQ, PlayingCard.DT] as PlayerHand;
-    const playerTwoHand = [PlayingCard.CQ, PlayingCard.CT] as PlayerHand;
-    const playerThreeHand = [PlayingCard.SQ, PlayingCard.ST] as PlayerHand;
-    const playerFourHand = [PlayingCard.DQ, PlayingCard.DT] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.HQ,
+      PlayingCardType.DT,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.CQ,
+      PlayingCardType.CT,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.SQ,
+      PlayingCardType.ST,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.DQ,
+      PlayingCardType.DT,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.CA,
-      PlayingCard.CJ,
-      PlayingCard.CK,
-      PlayingCard.D9,
-      PlayingCard.H3,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.CA,
+      PlayingCardType.CJ,
+      PlayingCardType.CK,
+      PlayingCardType.D9,
+      PlayingCardType.H3,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
@@ -714,32 +921,44 @@ describe("EvaluateHand", () => {
 
   it("should compare four players low Full House ", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.H2, PlayingCard.D2] as PlayerHand;
-    const playerTwoHand = [PlayingCard.H7, PlayingCard.S4] as PlayerHand;
-    const playerThreeHand = [PlayingCard.S2, PlayingCard.D2] as PlayerHand;
-    const playerFourHand = [PlayingCard.H7, PlayingCard.D4] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.H2,
+      PlayingCardType.D2,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.H7,
+      PlayingCardType.S4,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.S2,
+      PlayingCardType.D2,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.H7,
+      PlayingCardType.D4,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.CA,
-      PlayingCard.C5,
-      PlayingCard.C2,
-      PlayingCard.DA,
-      PlayingCard.CA,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.CA,
+      PlayingCardType.C5,
+      PlayingCardType.C2,
+      PlayingCardType.DA,
+      PlayingCardType.CA,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
@@ -753,32 +972,44 @@ describe("EvaluateHand", () => {
   });
   it("should compare four players high Full House  ", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.H9, PlayingCard.DT] as PlayerHand;
-    const playerTwoHand = [PlayingCard.SA, PlayingCard.DA] as PlayerHand;
-    const playerThreeHand = [PlayingCard.C9, PlayingCard.CT] as PlayerHand;
-    const playerFourHand = [PlayingCard.DA, PlayingCard.HA] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.H9,
+      PlayingCardType.DT,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.SA,
+      PlayingCardType.DA,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.C9,
+      PlayingCardType.CT,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.DA,
+      PlayingCardType.HA,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.SK,
-      PlayingCard.HK,
-      PlayingCard.H2,
-      PlayingCard.D9,
-      PlayingCard.DK,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.SK,
+      PlayingCardType.HK,
+      PlayingCardType.H2,
+      PlayingCardType.D9,
+      PlayingCardType.DK,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
@@ -793,32 +1024,44 @@ describe("EvaluateHand", () => {
 
   it("should compare four players with a Four Of A Kind with tie ", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.H9, PlayingCard.D9] as PlayerHand;
-    const playerTwoHand = [PlayingCard.S9, PlayingCard.H9] as PlayerHand;
-    const playerThreeHand = [PlayingCard.D9, PlayingCard.C9] as PlayerHand;
-    const playerFourHand = [PlayingCard.C9, PlayingCard.H9] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.H9,
+      PlayingCardType.D9,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.S9,
+      PlayingCardType.H9,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.D9,
+      PlayingCardType.C9,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.C9,
+      PlayingCardType.H9,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.DT,
-      PlayingCard.C5,
-      PlayingCard.C2,
-      PlayingCard.S9,
-      PlayingCard.H9,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.DT,
+      PlayingCardType.C5,
+      PlayingCardType.C2,
+      PlayingCardType.S9,
+      PlayingCardType.H9,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
@@ -829,32 +1072,44 @@ describe("EvaluateHand", () => {
 
   it("should compare four players with Four Of A Kind with low priority ", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.H2, PlayingCard.D2] as PlayerHand;
-    const playerTwoHand = [PlayingCard.CA, PlayingCard.C4] as PlayerHand;
-    const playerThreeHand = [PlayingCard.D2, PlayingCard.H2] as PlayerHand;
-    const playerFourHand = [PlayingCard.C4, PlayingCard.CA] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.H2,
+      PlayingCardType.D2,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.CA,
+      PlayingCardType.C4,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.D2,
+      PlayingCardType.H2,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.C4,
+      PlayingCardType.CA,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.H2,
-      PlayingCard.C5,
-      PlayingCard.C2,
-      PlayingCard.D9,
-      PlayingCard.S3,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.H2,
+      PlayingCardType.C5,
+      PlayingCardType.C2,
+      PlayingCardType.D9,
+      PlayingCardType.S3,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
@@ -869,32 +1124,44 @@ describe("EvaluateHand", () => {
 
   it("should compare four players with a Four Of Kind With High Priority", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.SA, PlayingCard.DA] as PlayerHand;
-    const playerTwoHand = [PlayingCard.CA, PlayingCard.C4] as PlayerHand;
-    const playerThreeHand = [PlayingCard.DA, PlayingCard.SA] as PlayerHand;
-    const playerFourHand = [PlayingCard.C4, PlayingCard.CA] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.SA,
+      PlayingCardType.DA,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.CA,
+      PlayingCardType.C4,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.DA,
+      PlayingCardType.SA,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.C4,
+      PlayingCardType.CA,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.CA,
-      PlayingCard.D5,
-      PlayingCard.HA,
-      PlayingCard.D9,
-      PlayingCard.C3,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.CA,
+      PlayingCardType.D5,
+      PlayingCardType.HA,
+      PlayingCardType.D9,
+      PlayingCardType.C3,
     ];
 
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
@@ -909,36 +1176,51 @@ describe("EvaluateHand", () => {
 
   it("should compare five players with a High Card low priority", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.S2, PlayingCard.H3] as PlayerHand;
-    const playerTwoHand = [PlayingCard.S7, PlayingCard.H5] as PlayerHand;
-    const playerThreeHand = [PlayingCard.H3, PlayingCard.S2] as PlayerHand;
-    const playerFourHand = [PlayingCard.H5, PlayingCard.S7] as PlayerHand;
-    const playerFiveHand = [PlayingCard.D2, PlayingCard.C6] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.S2,
+      PlayingCardType.H3,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.S7,
+      PlayingCardType.H5,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.H3,
+      PlayingCardType.S2,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.H5,
+      PlayingCardType.S7,
+    ] as PlayerHandType;
+    const playerFiveHand = [
+      PlayingCardType.D2,
+      PlayingCardType.C6,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.D2,
-      PlayingCard.S6,
-      PlayingCard.H3,
-      PlayingCard.D9,
-      PlayingCard.C6,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.D2,
+      PlayingCardType.S6,
+      PlayingCardType.H3,
+      PlayingCardType.D9,
+      PlayingCardType.C6,
     ];
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
-    const playerFiveResult: Evaluation = evaluator.evaluate(
+    const playerFiveResult: EvaluationType = evaluator.evaluate(
       playerFiveHand,
       communityCards
     );
@@ -955,36 +1237,51 @@ describe("EvaluateHand", () => {
   });
   it("should compare five players with a High Card with high priority", () => {
     const evaluator = new PokerHandEval();
-    const playerOneHand = [PlayingCard.H9, PlayingCard.DJ] as PlayerHand;
-    const playerTwoHand = [PlayingCard.HA, PlayingCard.S9] as PlayerHand;
-    const playerThreeHand = [PlayingCard.DJ, PlayingCard.H9] as PlayerHand;
-    const playerFourHand = [PlayingCard.S9, PlayingCard.HA] as PlayerHand;
-    const playerFiveHand = [PlayingCard.C9, PlayingCard.D9] as PlayerHand;
+    const playerOneHand = [
+      PlayingCardType.H9,
+      PlayingCardType.DJ,
+    ] as PlayerHandType;
+    const playerTwoHand = [
+      PlayingCardType.HA,
+      PlayingCardType.S9,
+    ] as PlayerHandType;
+    const playerThreeHand = [
+      PlayingCardType.DJ,
+      PlayingCardType.H9,
+    ] as PlayerHandType;
+    const playerFourHand = [
+      PlayingCardType.S9,
+      PlayingCardType.HA,
+    ] as PlayerHandType;
+    const playerFiveHand = [
+      PlayingCardType.C9,
+      PlayingCardType.D9,
+    ] as PlayerHandType;
 
-    const communityCards: CommunityCards = [
-      PlayingCard.S2,
-      PlayingCard.D6,
-      PlayingCard.C3,
-      PlayingCard.H5,
-      PlayingCard.C7,
+    const communityCards: CommunityCardsType = [
+      PlayingCardType.S2,
+      PlayingCardType.D6,
+      PlayingCardType.C3,
+      PlayingCardType.H5,
+      PlayingCardType.C7,
     ];
-    const playerOneResult: Evaluation = evaluator.evaluate(
+    const playerOneResult: EvaluationType = evaluator.evaluate(
       playerOneHand,
       communityCards
     );
-    const playerTwoResult: Evaluation = evaluator.evaluate(
+    const playerTwoResult: EvaluationType = evaluator.evaluate(
       playerTwoHand,
       communityCards
     );
-    const playerThreeResult: Evaluation = evaluator.evaluate(
+    const playerThreeResult: EvaluationType = evaluator.evaluate(
       playerThreeHand,
       communityCards
     );
-    const playerFourResult: Evaluation = evaluator.evaluate(
+    const playerFourResult: EvaluationType = evaluator.evaluate(
       playerFourHand,
       communityCards
     );
-    const playerFiveResult: Evaluation = evaluator.evaluate(
+    const playerFiveResult: EvaluationType = evaluator.evaluate(
       playerFiveHand,
       communityCards
     );

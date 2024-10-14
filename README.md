@@ -36,44 +36,56 @@ The following example demonstrates how to compare the hands of four players, inc
 ```ts
 import { PokerHandEval } from "poker-hand-eval";
 import type {
-  PlayingCard,
-  PlayerHand,
-  CommunityCards,
-  Evaluation,
+  PlayingCardType,
+  PlayerHandType,
+  CommunityCardsType,
+  EvaluationType,
 } from "poker-hand-eval";
 
 // Create an instance of the PokerHandEval class
 const evaluator = new PokerHandEval();
 
 // Define the hands of four players
-const playerOneHand = [PlayingCard.HT, PlayingCard.H9] as PlayerHand;
-const playerTwoHand = [PlayingCard.D8, PlayingCard.H6] as PlayerHand;
-const playerThreeHand = [PlayingCard.S9, PlayingCard.C9] as PlayerHand;
-const playerFourHand = [PlayingCard.DA, PlayingCard.HA] as PlayerHand;
+const playerOneHand = [
+  PlayingCardType.HT,
+  PlayingCardType.H9,
+] as PlayerHandType;
+const playerTwoHand = [
+  PlayingCardType.D8,
+  PlayingCardType.H6,
+] as PlayerHandType;
+const playerThreeHand = [
+  PlayingCardType.S9,
+  PlayingCardType.C9,
+] as PlayerHandType;
+const playerFourHand = [
+  PlayingCardType.DA,
+  PlayingCardType.HA,
+] as PlayerHandType;
 
 // Define the community cards
-const communityCards: CommunityCards = [
-  PlayingCard.D9,
-  PlayingCard.H9,
-  PlayingCard.CT,
-  PlayingCard.D7,
-  PlayingCard.C6,
+const communityCards: CommunityCardsType = [
+  PlayingCardType.D9,
+  PlayingCardType.H9,
+  PlayingCardType.CT,
+  PlayingCardType.D7,
+  PlayingCardType.C6,
 ];
 
 // Evaluate each player's hand against the community cards
-const playerOneResult: Evaluation = evaluator.evaluate(
+const playerOneResult: EvaluationType = evaluator.evaluate(
   playerOneHand,
   communityCards
 );
-const playerTwoResult: Evaluation = evaluator.evaluate(
+const playerTwoResult: EvaluationType = evaluator.evaluate(
   playerTwoHand,
   communityCards
 );
-const playerThreeResult: Evaluation = evaluator.evaluate(
+const playerThreeResult: EvaluationType = evaluator.evaluate(
   playerThreeHand,
   communityCards
 );
-const playerFourResult: Evaluation = evaluator.evaluate(
+const playerFourResult: EvaluationType = evaluator.evaluate(
   playerFourHand,
   communityCards
 );

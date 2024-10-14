@@ -1,4 +1,4 @@
-import { EvaluationPlayingCard } from './types';
+import { EvaluationPlayingCardType } from "./types";
 
 type KickersArgs = {
   highestRanksFromHand?: string[];
@@ -6,19 +6,24 @@ type KickersArgs = {
 };
 
 export class GetRanks {
-  private handCards: EvaluationPlayingCard[];
+  private handCards: EvaluationPlayingCardType[];
 
-  constructor(handCards: EvaluationPlayingCard[]) {
+  constructor(handCards: EvaluationPlayingCardType[]) {
     this.handCards = handCards;
   }
 
-  public getKickers({ highestRanksFromHand, numberOfKickers }: KickersArgs): [...string[]] {
+  public getKickers({
+    highestRanksFromHand,
+    numberOfKickers,
+  }: KickersArgs): [...string[]] {
     const handRanks = this.handCards
       .map((card) => card[1])
       .sort((a, b) => b.localeCompare(a))
       .slice(0, 5);
 
-    const remainingRanks = handRanks.filter((rank) => !highestRanksFromHand?.includes(rank));
+    const remainingRanks = handRanks.filter(
+      (rank) => !highestRanksFromHand?.includes(rank)
+    );
 
     const kickers = remainingRanks.slice(0, numberOfKickers);
     return kickers;
@@ -37,12 +42,12 @@ export class GetRanks {
         return fourOfAKindRank;
       }
     }
-    return '';
+    return "";
   }
 
   public getHighestRanksOfFlush(): [...string[]] {
     const suitCounts = new Map<string, number>();
-    const flushCards = new Map<string, EvaluationPlayingCard[]>();
+    const flushCards = new Map<string, EvaluationPlayingCardType[]>();
     for (const card of this.handCards) {
       const suit = card[0];
       suitCounts.set(suit, (suitCounts.get(suit) || 0) + 1);
@@ -53,7 +58,9 @@ export class GetRanks {
       }
     }
 
-    const validFlushCards = Array.from(flushCards.values()).find((cards) => cards.length >= 5);
+    const validFlushCards = Array.from(flushCards.values()).find(
+      (cards) => cards.length >= 5
+    );
     if (validFlushCards) {
       const sortedCards = validFlushCards
         .map((card) => card[1])
@@ -65,24 +72,28 @@ export class GetRanks {
   }
 
   public gethighestRankOfStraight(): string {
-    const cardRankOrder = '23456789ABCDE';
+    const cardRankOrder = "23456789ABCDE";
     const ranks = this.handCards.map((card) => card[1]);
     const uniqueSortedRanks = Array.from(new Set(ranks)).sort(
-      (a, b) => cardRankOrder.indexOf(a) - cardRankOrder.indexOf(b),
+      (a, b) => cardRankOrder.indexOf(a) - cardRankOrder.indexOf(b)
     );
 
     let isLowAceStraight = false;
-    const ranksString = uniqueSortedRanks.join('');
+    const ranksString = uniqueSortedRanks.join("");
 
-    if (ranksString.includes('2345') && ranksString.includes('E') && !ranksString.includes('6')) {
+    if (
+      ranksString.includes("2345") &&
+      ranksString.includes("E") &&
+      !ranksString.includes("6")
+    ) {
       isLowAceStraight = true;
     }
 
-    if (isLowAceStraight) return '5';
+    if (isLowAceStraight) return "5";
 
     let isStraight = false;
 
-    let straightHighestRank = '';
+    let straightHighestRank = "";
 
     const areRanksConsecutive = (startIndex: number) => {
       const consecutiveRanksNeeded = 4;
@@ -98,9 +109,15 @@ export class GetRanks {
     };
 
     const straightLength = 5;
-    for (let startIndex = 0; startIndex <= uniqueSortedRanks.length - straightLength; startIndex++) {
+    for (
+      let startIndex = 0;
+      startIndex <= uniqueSortedRanks.length - straightLength;
+      startIndex++
+    ) {
       if (areRanksConsecutive(startIndex)) {
-        const potentialHighestRank = uniqueSortedRanks.slice(startIndex, startIndex + straightLength).pop();
+        const potentialHighestRank = uniqueSortedRanks
+          .slice(startIndex, startIndex + straightLength)
+          .pop();
         if (potentialHighestRank !== undefined) {
           straightHighestRank = potentialHighestRank;
         }
@@ -109,7 +126,7 @@ export class GetRanks {
     }
     if (isStraight) return straightHighestRank;
 
-    return '';
+    return "";
   }
 
   public getHighestRankOfThreeOfAKind(): string {
@@ -179,6 +196,6 @@ export class GetRanks {
       }
     }
 
-    return '';
+    return "";
   }
 }

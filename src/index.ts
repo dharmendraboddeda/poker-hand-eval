@@ -1,12 +1,12 @@
-export { PokerHandEval } from "./evaluator.service";
+export { PokerHandEval } from "./evaluator";
 export {
-  CardCategory,
-  CommunityCards,
-  Evaluation,
-  EvaluationPlayingCard,
-  PlayerHand,
-  PlayingCard,
-  PokerHand,
-  Result,
-  ResultCardCategory,
+  CardCategoryType,
+  CommunityCardsType,
+  EvaluationPlayingCardType,
+  EvaluationType,
+  PlayerHandType,
+  PlayingCardType,
+  PokerHandType,
+  ResultCardCategoryType,
+  ResultType,
 } from "./evaluator/types";

@@ -1,13 +1,13 @@
-import { EvaluationPlayingCard } from './types';
+import { EvaluationPlayingCardType } from "./types";
 
 export class CheckPokerRanking {
-  private handCards: EvaluationPlayingCard[];
-  constructor(handCards: EvaluationPlayingCard[]) {
+  private handCards: EvaluationPlayingCardType[];
+  constructor(handCards: EvaluationPlayingCardType[]) {
     this.handCards = handCards;
   }
 
   public checkStraightFlush(): boolean {
-    const suitToCardsMap = new Map<string, EvaluationPlayingCard[]>();
+    const suitToCardsMap = new Map<string, EvaluationPlayingCardType[]>();
 
     for (const card of this.handCards) {
       const suit = card[0];
@@ -19,8 +19,8 @@ export class CheckPokerRanking {
       }
     }
 
-    const potentialFlushCards = Array.from(suitToCardsMap.values()).flatMap((cards) =>
-      cards.length >= 5 ? cards : [],
+    const potentialFlushCards = Array.from(suitToCardsMap.values()).flatMap(
+      (cards) => (cards.length >= 5 ? cards : [])
     );
 
     const hasStraightInFlush = this.checkStraight(potentialFlushCards);
@@ -67,7 +67,7 @@ export class CheckPokerRanking {
 
   public checkFlush(): boolean {
     const suitCounts = new Map<string, number>();
-    const flushCards = new Map<string, EvaluationPlayingCard[]>();
+    const flushCards = new Map<string, EvaluationPlayingCardType[]>();
     for (const card of this.handCards) {
       const suit = card[0];
       suitCounts.set(suit, (suitCounts.get(suit) || 0) + 1);
@@ -87,19 +87,27 @@ export class CheckPokerRanking {
     return false;
   }
 
-  public checkStraight(potentialFlushCards?: EvaluationPlayingCard[]): boolean {
-    const handCards = potentialFlushCards ? potentialFlushCards : this.handCards;
+  public checkStraight(
+    potentialFlushCards?: EvaluationPlayingCardType[]
+  ): boolean {
+    const handCards = potentialFlushCards
+      ? potentialFlushCards
+      : this.handCards;
 
-    const cardRankOrder = '23456789ABCDE';
+    const cardRankOrder = "23456789ABCDE";
     const ranks = handCards.map((card) => card[1]);
     const uniqueSortedRanks = Array.from(new Set(ranks)).sort(
-      (a, b) => cardRankOrder.indexOf(a) - cardRankOrder.indexOf(b),
+      (a, b) => cardRankOrder.indexOf(a) - cardRankOrder.indexOf(b)
     );
 
     let isLowAceStraight = false;
-    const ranksString = uniqueSortedRanks.join('');
+    const ranksString = uniqueSortedRanks.join("");
 
-    if (ranksString.includes('2345') && ranksString.includes('E') && !ranksString.includes('6')) {
+    if (
+      ranksString.includes("2345") &&
+      ranksString.includes("E") &&
+      !ranksString.includes("6")
+    ) {
       isLowAceStraight = true;
     }
 
@@ -121,7 +129,11 @@ export class CheckPokerRanking {
     };
 
     const straightLength = 5;
-    for (let startIndex = 0; startIndex <= uniqueSortedRanks.length - straightLength; startIndex++) {
+    for (
+      let startIndex = 0;
+      startIndex <= uniqueSortedRanks.length - straightLength;
+      startIndex++
+    ) {
       if (areRanksConsecutive(startIndex)) {
         isStraight = true;
       }

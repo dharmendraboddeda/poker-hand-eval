@@ -1,17 +1,17 @@
-import { Result, ResultCardCategory, CardCategory } from './types';
-import { createHandRank } from './createHandRank';
+import { ResultType, ResultCardCategoryType, CardCategoryType } from "./types";
+import { createHandRank } from "./createHandRank";
 
-export function getResult(category: number, ...rest: number[]): Result {
+export function getResult(category: number, ...rest: number[]): ResultType {
   return {
-    category: getCategory(category) as ResultCardCategory,
+    category: getCategory(category) as ResultCardCategoryType,
     rank: getRank(category, ...rest),
   };
 }
 
-function getCategory(category: number): ResultCardCategory | undefined {
-  for (const [key, value] of Object.entries(CardCategory)) {
+function getCategory(category: number): ResultCardCategoryType | undefined {
+  for (const [key, value] of Object.entries(CardCategoryType)) {
     if (value === category) {
-      return key as ResultCardCategory;
+      return key as ResultCardCategoryType;
     }
   }
   return undefined;
